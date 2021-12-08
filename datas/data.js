@@ -1,0 +1,11 @@
+"use strict";
+exports.__esModule = true;
+exports.urlD = 'https://develop.bit.team/btc_usdt';
+exports.urlS = 'https://staging.bit.team/btc_usdt';
+exports.urlM = 'https://spot.bit.team/eth_usdt';
+exports.mail = 'test.trader.three@hotmail.com';
+exports.pass = 'n33passw0rd';
+exports.mail1 = 'test.trader.four@hotmail.com';
+exports.mail2 = 'mgrechka@crypton.studio';
+exports.pass2 = 'Akfuvfy1';
+exports.f100 = 11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
