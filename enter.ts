@@ -8,10 +8,9 @@ let selectors = require('./datas/selectors');
 require('./datas/data');
 import {urlD, mail, pass} from './datas/data';
 
-(async function name() {
+export async function enterF(driver) {
     //вход 
-    const driver = new Builder().forBrowser('chrome').build();
-
+    
      await driver.manage().window().maximize();
      await driver.get(urlD);
      await driver.sleep(5000);
@@ -20,7 +19,7 @@ import {urlD, mail, pass} from './datas/data';
      await selectors.enter(driver).click();
      await driver.sleep(1000);
 
-     await selectors.prinim(driver).click();
+     await selectors.prinim1(driver).click();
      await driver.sleep(1000); 
      await selectors.captcha(driver).click();
      await driver.sleep(1000);
@@ -37,8 +36,10 @@ import {urlD, mail, pass} from './datas/data';
 
      await selectors.enter2(driver).click();
      await driver.sleep(1000);
-    
-    
+     await selectors.wait_prinim2(driver);
+     await selectors.prinim2(driver).click();
+     await driver.sleep(5000); 
+     
  
  
 
@@ -47,4 +48,4 @@ import {urlD, mail, pass} from './datas/data';
    
  
    
- })();
+ }

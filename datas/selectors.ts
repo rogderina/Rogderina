@@ -11,7 +11,18 @@ export function email(driver) { return driver.findElement(By.xpath("/html/body/d
 export function password(driver) { return driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/form/div[2]/div[2]/input")); }
 export function enter2(driver) { return driver.findElement(By.css("#__next > div:nth-child(3) > div > div.pusher > div > div._33srbhM-V43MWPEHfkMz_R > div._3i9Y9mGx61hd_4j2i1X2Z > div > form > div.TyzgNtkd0xhyGYRtpanE7 > div._2-suxZCaImojQDrDpKIU9r > button")); }
 export function capca(driver) { return driver.findElement(By.xpath("/html/body/div[2]/div[3]/div[1]/div/div/span")); }
-export function prinim(driver) { return driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/button")); } 
+export function prinim1(driver) { return driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/button")); } 
+export function prinim2(driver) {return driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button"));}
+
+export function balancBuy(driver) {return driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div/div[5]/div/div[2]/div[1]/div/p/span"));}
+export function balancSell(driver) {return driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div/div[5]/div/div[2]/div[2]/div/p/span"));}
+
+export function totalBuy(driver) {return driver.findElement(By.css("#quotedAmount_buy"));}
+export function totalSell(driver) {return driver.findElement(By.css("#quotedAmount_sell"));}
+
+
+
+export function wait_prinim2(driver) {return driver.wait(until.elementLocated(By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button")));}
 
 
 export function market(driver) { return driver.findElement(By.className("SELECTOR-ORDER-FORM-TAB-MARKET")); }
@@ -96,9 +107,6 @@ export function authorize(driver) {return driver.findElement(By.xpath("/html/bod
 
 export function cookies_login(driver) {return driver.findElement(By.xpath("/html/body/div[1]/div[3]/div/button/span"));}
 
-export function cookies(driver) {return driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button"));}
-
-export function wait_cookies(driver) {return driver.wait(until.elementLocated(By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button")));}
 
 export function wait_login_field(driver) { return driver.wait(until.elementLocated(By.xpath("/html/body/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/form/div[1]/div/input"),10000));}
 

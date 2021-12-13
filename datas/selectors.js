@@ -50,8 +50,20 @@ function enter2(driver) { return driver.findElement(selenium_webdriver_1.By.css(
 exports.enter2 = enter2;
 function capca(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div[2]/div[3]/div[1]/div/div/span")); }
 exports.capca = capca;
-function prinim(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div[1]/div[3]/div/button")); }
-exports.prinim = prinim;
+function prinim1(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div[1]/div[3]/div/button")); }
+exports.prinim1 = prinim1;
+function prinim2(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button")); }
+exports.prinim2 = prinim2;
+function balancBuy(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div/div/div/div/div[5]/div/div[2]/div[1]/div/p/span")); }
+exports.balancBuy = balancBuy;
+function balancSell(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div/div/div/div/div[5]/div/div[2]/div[2]/div/p/span")); }
+exports.balancSell = balancSell;
+function totalBuy(driver) { return driver.findElement(selenium_webdriver_1.By.css("#quotedAmount_buy")); }
+exports.totalBuy = totalBuy;
+function totalSell(driver) { return driver.findElement(selenium_webdriver_1.By.css("#quotedAmount_sell")); }
+exports.totalSell = totalSell;
+function wait_prinim2(driver) { return driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button"))); }
+exports.wait_prinim2 = wait_prinim2;
 function market(driver) { return driver.findElement(selenium_webdriver_1.By.className("SELECTOR-ORDER-FORM-TAB-MARKET")); }
 exports.market = market;
 function stop_loss(driver) { return driver.findElement(selenium_webdriver_1.By.className("SELECTOR-ORDER-FORM-TAB-CONDITIONAL")); }
@@ -133,10 +145,6 @@ function authorize(driver) { return driver.findElement(selenium_webdriver_1.By.x
 exports.authorize = authorize;
 function cookies_login(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div[1]/div[3]/div/button/span")); }
 exports.cookies_login = cookies_login;
-function cookies(driver) { return driver.findElement(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button")); }
-exports.cookies = cookies;
-function wait_cookies(driver) { return driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath("/html/body/div/div/div/div[1]/div/div[2]/button"))); }
-exports.wait_cookies = wait_cookies;
 function wait_login_field(driver) { return driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath("/html/body/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/form/div[1]/div/input"), 10000)); }
 exports.wait_login_field = wait_login_field;
 function trade_sell(driver, price, get) {
