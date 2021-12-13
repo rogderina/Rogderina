@@ -46,7 +46,7 @@ var selectors = require('./datas/selectors');
 var enterP = require('./enter');
 (function name() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, balancB, balancS, price, get, totalB, balancBStr, totalBalanc;
+        var driver, balancB, balancS, get, balancBStr, balancSStr, t, i, min, max, price, totalB, totalBalanc, balancBAfterB, balancBAfterBStr, totalBalancAfterB;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -72,7 +72,6 @@ var enterP = require('./enter');
                     return [4 /*yield*/, console.log(balancS)];
                 case 7:
                     _a.sent();
-                    price = 1;
                     get = 1;
                     //выбор пары
                     return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click()];
@@ -82,36 +81,60 @@ var enterP = require('./enter');
                     return [4 /*yield*/, driver.sleep(5000)];
                 case 9:
                     _a.sent();
-                    totalB = get * price;
-                    return [4 /*yield*/, console.log(totalB)];
-                case 10:
-                    _a.sent();
                     //перевод строк в числа
+                    //перевод balancB
                     balancB = balancB.slice(0, -4);
-                    return [4 /*yield*/, console.log(balancB)];
-                case 11:
-                    _a.sent();
                     balancBStr = balancB.replace(/[\s,%]/g, '').toLocaleLowerCase();
                     return [4 /*yield*/, console.log(balancBStr)];
-                case 12:
+                case 10:
                     _a.sent();
-                    if (!(balancBStr > totalB)) return [3 /*break*/, 16];
-                    return [4 /*yield*/, console.log('trade_buy posible')];
+                    //перевод balancS
+                    balancS = balancS.slice(0, -4);
+                    balancSStr = balancS.replace(/[\s,%]/g, '').toLocaleLowerCase();
+                    return [4 /*yield*/, console.log(balancSStr)];
+                case 11:
+                    _a.sent();
+                    t = 5;
+                    i = 0;
+                    _a.label = 12;
+                case 12:
+                    if (!(i < t)) return [3 /*break*/, 22];
+                    min = 1;
+                    max = 10;
+                    price = min - 0.5 + Math.random() * (max - min + 1);
+                    totalB = get * price;
+                    return [4 /*yield*/, console.log(totalB)];
                 case 13:
                     _a.sent();
-                    totalBalanc = balancBStr - totalB;
-                    return [4 /*yield*/, console.log(totalBalanc)];
+                    if (!(balancBStr > totalB)) return [3 /*break*/, 18];
+                    return [4 /*yield*/, console.log('trade_buy posible')];
                 case 14:
                     _a.sent();
-                    return [4 /*yield*/, console.log(balancBStr)];
+                    return [4 /*yield*/, selectors.trade_buy(driver, price, get)];
                 case 15:
-                    _a.sent();
-                    return [3 /*break*/, 18];
-                case 16: return [4 /*yield*/, console.log('totalB > balancB; trade_buy imposible')];
+                    _a.sent(); //торговля
+                    totalBalanc = balancBStr - totalB;
+                    return [4 /*yield*/, selectors.balancBuy(driver).getText()];
+                case 16:
+                    balancBAfterB = _a.sent();
+                    balancBAfterB = balancBAfterB.slice(0, -4);
+                    balancBAfterBStr = balancB.replace(/[\s,%]/g, '').toLocaleLowerCase();
+                    totalBalancAfterB = balancBAfterBStr - totalB;
+                    return [4 /*yield*/, console.log(totalBalanc, totalBalancAfterB)];
                 case 17:
                     _a.sent();
-                    _a.label = 18;
-                case 18: return [2 /*return*/];
+                    return [3 /*break*/, 19];
+                case 18:
+                    (balancBStr < totalB);
+                    _a.label = 19;
+                case 19: return [4 /*yield*/, console.log('totalB > balancB; trade_buy imposible')];
+                case 20:
+                    _a.sent();
+                    _a.label = 21;
+                case 21:
+                    i++;
+                    return [3 /*break*/, 12];
+                case 22: return [2 /*return*/];
             }
         });
     });
