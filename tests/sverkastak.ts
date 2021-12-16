@@ -8,9 +8,7 @@ let selectors = require('./datas/selectors');
 let enterP = require('./enter');
 
 export async function orderBuy(driver)  {
-   
 
-    
     await enterP.enterThree(driver);   
     await driver.sleep(5000);
          await console.log('enter success');
