@@ -13,8 +13,7 @@ export async function enterFour(driver) {
      await driver.manage().window().maximize();
      await driver.get(urlD);
      await driver.sleep(5000);
-    
-      
+
      await selectors.enter(driver).click();
      await driver.sleep(1000);
 
@@ -28,10 +27,6 @@ export async function enterFour(driver) {
 
      await selectors.password(driver).sendKeys(pass);
      await driver.sleep(1000);
-
-   
-     
-     
 
      await selectors.enter2(driver).click();
      await driver.sleep(1000);
