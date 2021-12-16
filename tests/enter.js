@@ -42,14 +42,16 @@ var chrome = require('selenium-webdriver/chrome');
 var chromedriver = require('chromedriver');
 var selectors = require('./datas/selectors');
 require('./datas/data');
+var await = require('./datas/await');
 var data_1 = require("./datas/data");
-function enterF(driver) {
+function enterThree(driver) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: 
-                //вход 
-                return [4 /*yield*/, driver.manage().window().maximize()];
+                case 0:
+                    _a.trys.push([0, , 20, 22]);
+                    //вход 
+                    return [4 /*yield*/, driver.manage().window().maximize()];
                 case 1:
                     //вход 
                     _a.sent();
@@ -68,45 +70,51 @@ function enterF(driver) {
                     return [4 /*yield*/, selectors.prinim1(driver).click()];
                 case 6:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
-                case 7:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.captcha(driver).click()];
+                    return [4 /*yield*/, .prinim1(driver)];
+                case 7: return [4 /*yield*/, _a.sent()];
                 case 8:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
+                    return [4 /*yield*/, selectors.captcha(driver).click()];
                 case 9:
                     _a.sent();
-                    return [4 /*yield*/, selectors.email(driver).sendKeys(data_1.mail)];
+                    return [4 /*yield*/, driver.sleep(1000)];
                 case 10:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
+                    return [4 /*yield*/, selectors.email(driver).sendKeys(data_1.mail)];
                 case 11:
                     _a.sent();
-                    return [4 /*yield*/, selectors.password(driver).sendKeys(data_1.pass)];
+                    return [4 /*yield*/, driver.sleep(1000)];
                 case 12:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
+                    return [4 /*yield*/, selectors.password(driver).sendKeys(data_1.pass)];
                 case 13:
                     _a.sent();
-                    return [4 /*yield*/, selectors.enter2(driver).click()];
+                    return [4 /*yield*/, driver.sleep(1000)];
                 case 14:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
+                    return [4 /*yield*/, selectors.enter2(driver).click()];
                 case 15:
                     _a.sent();
-                    return [4 /*yield*/, selectors.wait_prinim2(driver)];
+                    return [4 /*yield*/, driver.sleep(1000)];
                 case 16:
                     _a.sent();
-                    return [4 /*yield*/, selectors.prinim2(driver).click()];
+                    return [4 /*yield*/, selectors.wait_prinim2(driver)];
                 case 17:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(5000)];
+                    return [4 /*yield*/, selectors.prinim2(driver).click()];
                 case 18:
                     _a.sent();
-                    return [2 /*return*/];
+                    return [4 /*yield*/, driver.sleep(5000)];
+                case 19:
+                    _a.sent();
+                    return [3 /*break*/, 22];
+                case 20: return [4 /*yield*/, driver.sleep(5000)];
+                case 21:
+                    _a.sent();
+                    return [7 /*endfinally*/];
+                case 22: return [2 /*return*/];
             }
         });
     });
 }
-exports.enterF = enterF;
+exports.enterThree = enterThree;

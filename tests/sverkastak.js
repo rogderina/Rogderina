@@ -44,14 +44,12 @@ var chromedriver = require('chromedriver');
 var selectors = require('./datas/selectors');
 // enter
 var enterP = require('./enter');
-(function name() {
+function orderBuy(driver) {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, balancB, balancS, get, balancBStr, balancSStr, t, i, min, max, price, totalB, totalBalanc, balancBAfterB, balancBAfterBStr, totalBalancAfterB;
+        var balancB, balancS, balancBStr, balancBstr, balancSStr, balancSstr, t, i, min, max, price, get, totalB, totalBalanc, balancBAfterB, balancBAfterBStr, balancBAfterBstr, totalBalancAfterB;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0:
-                    driver = new selenium_webdriver_1.Builder().forBrowser('chrome').build();
-                    return [4 /*yield*/, enterP.enterF(driver)];
+                case 0: return [4 /*yield*/, enterP.enterThree(driver)];
                 case 1:
                     _a.sent();
                     return [4 /*yield*/, driver.sleep(5000)];
@@ -63,38 +61,41 @@ var enterP = require('./enter');
                     return [4 /*yield*/, selectors.balancBuy(driver).getText()];
                 case 4:
                     balancB = _a.sent();
-                    return [4 /*yield*/, console.log(balancB)];
+                    return [4 /*yield*/, console.log(balancB, 'balancB')];
                 case 5:
                     _a.sent();
                     return [4 /*yield*/, selectors.balancSell(driver).getText()];
                 case 6:
                     balancS = _a.sent();
-                    return [4 /*yield*/, console.log(balancS)];
+                    return [4 /*yield*/, console.log(balancS, 'balancS')];
                 case 7:
-                    _a.sent();
-                    get = 1;
-                    //выбор пары
-                    return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click()];
-                case 8:
-                    //выбор пары
-                    _a.sent();
-                    return [4 /*yield*/, driver.sleep(5000)];
-                case 9:
                     _a.sent();
                     //перевод строк в числа
                     //перевод balancB
                     balancB = balancB.slice(0, -4);
-                    balancBStr = balancB.replace(/[\s,%]/g, '').toLocaleLowerCase();
-                    return [4 /*yield*/, console.log(balancBStr)];
-                case 10:
+                    balancBStr = balancB.replace(/[\s.]/g, '');
+                    balancBStr = balancBStr.replace(/\,/g, '.');
+                    balancBstr = +balancBStr;
+                    return [4 /*yield*/, console.log(balancBstr, 'balancBstr')];
+                case 8:
                     _a.sent();
                     //перевод balancS
                     balancS = balancS.slice(0, -4);
-                    balancSStr = balancS.replace(/[\s,%]/g, '').toLocaleLowerCase();
-                    return [4 /*yield*/, console.log(balancSStr)];
+                    balancSStr = balancS.replace(/[\s.]/g, '');
+                    balancSStr = balancSStr.replace(/\,/g, '.');
+                    balancSstr = +balancSStr;
+                    return [4 /*yield*/, console.log(balancSstr)];
+                case 9:
+                    _a.sent();
+                    //выбор пары
+                    return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click()];
+                case 10:
+                    //выбор пары
+                    _a.sent();
+                    return [4 /*yield*/, driver.sleep(5000)];
                 case 11:
                     _a.sent();
-                    t = 5;
+                    t = 2;
                     i = 0;
                     _a.label = 12;
                 case 12:
@@ -102,32 +103,37 @@ var enterP = require('./enter');
                     min = 1;
                     max = 10;
                     price = min - 0.5 + Math.random() * (max - min + 1);
+                    get = min - 0.5 + Math.random() * (max - min + 1);
                     totalB = get * price;
-                    return [4 /*yield*/, console.log(totalB)];
+                    return [4 /*yield*/, console.log(totalB, 'totalB')];
                 case 13:
                     _a.sent();
-                    if (!(balancBStr > totalB)) return [3 /*break*/, 18];
+                    if (!(balancBstr > totalB)) return [3 /*break*/, 19];
                     return [4 /*yield*/, console.log('trade_buy posible')];
                 case 14:
                     _a.sent();
                     return [4 /*yield*/, selectors.trade_buy(driver, price, get)];
                 case 15:
                     _a.sent(); //торговля
-                    totalBalanc = balancBStr - totalB;
+                    totalBalanc = balancBstr - totalB;
                     return [4 /*yield*/, selectors.balancBuy(driver).getText()];
                 case 16:
                     balancBAfterB = _a.sent();
                     balancBAfterB = balancBAfterB.slice(0, -4);
-                    balancBAfterBStr = balancB.replace(/[\s,%]/g, '').toLocaleLowerCase();
-                    totalBalancAfterB = balancBAfterBStr - totalB;
-                    return [4 /*yield*/, console.log(totalBalanc, totalBalancAfterB)];
+                    balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');
+                    balancBAfterBStr = balancBAfterBStr.replace(/\,/g, '.');
+                    balancBAfterBstr = +balancBAfterBStr;
+                    return [4 /*yield*/, console.log(balancBAfterBstr, 'balancBAfterBstr')];
                 case 17:
                     _a.sent();
-                    return [3 /*break*/, 19];
+                    totalBalancAfterB = balancBAfterBStr - totalB;
+                    return [4 /*yield*/, console.log(totalBalanc, 'totalBalanc', totalBalancAfterB, 'totalBalancAfterB')];
                 case 18:
-                    (balancBStr < totalB);
-                    _a.label = 19;
-                case 19: return [4 /*yield*/, console.log('totalB > balancB; trade_buy imposible')];
+                    _a.sent();
+                    return [3 /*break*/, 21];
+                case 19:
+                    if (!(balancBStr < totalB)) return [3 /*break*/, 21];
+                    return [4 /*yield*/, console.log('totalB > balancB; trade_buy imposible')];
                 case 20:
                     _a.sent();
                     _a.label = 21;
@@ -138,4 +144,7 @@ var enterP = require('./enter');
             }
         });
     });
-})();
+}
+exports.orderBuy = orderBuy;
+var driver = new selenium_webdriver_1.Builder().forBrowser('chrome').build();
+orderBuy(driver);

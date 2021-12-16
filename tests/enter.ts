@@ -6,9 +6,12 @@ const chromedriver = require('chromedriver');
 
 let selectors = require('./datas/selectors');
 require('./datas/data');
+let awaity = require('./datas/awaity');
 import {urlD, mail, pass} from './datas/data';
 
-export async function enterF(driver) {
+export async function enterThree(driver) {
+    
+    try {
     //вход 
     
      await driver.manage().window().maximize();
@@ -17,12 +20,14 @@ export async function enterF(driver) {
     
       
      await selectors.enter(driver).click();
-     await driver.sleep(1000);
+     await driver.sleep(1000); 
 
      await selectors.prinim1(driver).click();
-     await driver.sleep(1000); 
+     await awaity.prinim1(driver);
+
+
      await selectors.captcha(driver).click();
-     await driver.sleep(1000);
+     await awaity.captcha(driver);
     
      await selectors.email(driver).sendKeys(mail);
      await driver.sleep(1000);
@@ -35,17 +40,15 @@ export async function enterF(driver) {
      
 
      await selectors.enter2(driver).click();
-     await driver.sleep(1000);
+     await awaity.enter2(driver);
      await selectors.wait_prinim2(driver);
      await selectors.prinim2(driver).click();
-     await driver.sleep(5000); 
+     await awaity.prinim2(driver);
+     }
      
- 
- 
+     finally {
+        await driver.sleep(5000); 
+        
+     }
+} 
 
-   
- 
-   
- 
-   
- }
