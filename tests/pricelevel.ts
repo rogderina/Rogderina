@@ -29,6 +29,7 @@ class totalBalancAfterS {
     print(){
         console.log(balancSell: ${this.balancBstr}  balancAfterBuy: ${this.balancBAfterBStr} totalBuy: ${this.totalB});
     }
+
     // toString(): string{
     //     return ${this.name}: ${this.age};
 

@@ -9,8 +9,7 @@ require('./datas/data');
 import {urlD, mail1, pass} from './datas/data';
 
 export async function enterFour(driver) {
-    //вход 
-    
+    //вход
      await driver.manage().window().maximize();
      await driver.get(urlD);
      await driver.sleep(5000);
