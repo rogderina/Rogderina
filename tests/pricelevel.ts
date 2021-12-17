@@ -7,30 +7,19 @@ const chromedriver = require('chromedriver');
 let orderB = require('./sverkastak');
 let orderS = require('./sverkastakSell');
 
-class totalBalancAfterB {
-    balancesObject = await orderB.orderBuy(driver);
-    balancBstr: number;
-    balancBAfterBStr: number;
-    totalB: number;
-    print(){
-        console.log(balancBuy: ${this.balancBstr}  balancAfterBuy: ${this.balancBAfterBStr} totalBuy: ${this.totalB});
-    }
-    // toString(): string{
-    //     return ${this.name}: ${this.age};
 
-}
+(async function name() {
+    const driver = new Builder().forBrowser('chrome').build();
+    await orderB.orderBuy(driver);//вызов функции Buy
+ 
 
-
-class totalBalancAfterS {
-    balancesObject = await orderS.orderSell(driver)
-    balancBstr: number;
-    balancBAfterBStr: number;
-    totalB: number;
-    print(){
-        console.log(balancSell: ${this.balancBstr}  balancAfterBuy: ${this.balancBAfterBStr} totalBuy: ${this.totalB});
-    }
-
-    // toString(): string{
-    //     return ${this.name}: ${this.age};
-
-}
+    for(var i = 0; i<array.length; i++) { 
+        arrayData (array[i].get, array[i].price) 
+     }
+    
+ 
+     
+     
+    
+ 
+})();
