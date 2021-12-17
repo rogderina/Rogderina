@@ -22,13 +22,14 @@ export async function enterThree(driver) {
      await selectors.enter(driver).click();
      await driver.sleep(1000); 
 
-     await selectors.prinim1(driver).click();
      await awaity.prinim1(driver);
+     await selectors.prinim1(driver).click();
+     
 
+     await awaity.captcha(driver);
 
      await selectors.captcha(driver).click();
-     await awaity.captcha(driver);
-    
+         
      await selectors.email(driver).sendKeys(mail);
      await driver.sleep(1000);
 
@@ -38,12 +39,13 @@ export async function enterThree(driver) {
    
      
      
-
-     await selectors.enter2(driver).click();
      await awaity.enter2(driver);
+     await selectors.enter2(driver).click();
+     
      await selectors.wait_prinim2(driver);
-     await selectors.prinim2(driver).click();
      await awaity.prinim2(driver);
+
+     await selectors.prinim2(driver).click();
      }
      
      finally {

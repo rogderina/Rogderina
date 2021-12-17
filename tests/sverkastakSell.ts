@@ -5,9 +5,9 @@ const chrome = require('selenium-webdriver/chrome');
 const chromedriver = require('chromedriver');
 let selectors = require('./datas/selectors');
 // enter
-let enterP = require('./enter');
+let enterP = require('./enterFour');
 
-export async function orderSell(driver) {
+export async function orderSell(driver, get1, get2, price1, price2) {
    
 
     
@@ -44,50 +44,30 @@ export async function orderSell(driver) {
     //выбор пары
      await driver.findElement(By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click();
      await driver.sleep(5000);
-   
-    
+
+     interface Iprimer {
+        balancB: number;
+        balancS: number;
+        balancSAfterSstr: number;
         
-
-    //цикл для торговли и сравнения
-    const t = 2;
-    
-        for (let i=0; i < t; i++) {
-   
-    const min = 1; //рандом
-    const max = 10;
-    let price = min - 0.5 + Math.random() * (max - min + 1);
-    let get = min - 0.5 + Math.random() * (max - min + 1);
-        
-    
-        
-    let  totalB = get * price; //получение total
-    await console.log(totalB, 'totalB'); 
-
-        if (balancBstr> totalB) //постановка условий
-     {
-         await console.log('trade_buy posible');
-         await selectors.trade_buy(driver, price, get); //торговля
-            let totalBalanc = balancBstr - totalB; //получение totalBalanc 
-
-        let balancBAfterB = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
-            balancBAfterB = balancBAfterB.slice(0,-4);
-            let balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');
-            balancBAfterBStr = balancBAfterBStr.replace(/\,/g, '.');
-            let balancBAfterBstr:number = + balancBAfterBStr;
-            await console.log(balancBAfterBstr, 'balancBAfterBstr');
+    }
+     let arrayData1: Iprimer[] = []
 
 
-            
-            let totalBalancAfterB = balancBAfterBStr - totalB; //totalBalancAfterB
+    let total1 = get1 * price1;
+    let total2 = get2 * price2;
+    await selectors.trade_sell(driver, price1, get1);
+    await selectors.trade_sell(driver, price2, get2);
 
-         await console.log(totalBalanc, 'totalBalanc', totalBalancAfterB, 'totalBalancAfterB');
-             
-   } 
-     else if (balancBStr < totalB)
-     {
-         await console.log('totalB > balancB; trade_buy imposible');
-         
-      }
+    let balancSAfterSstr:number;
+    let balancSAfterS = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
+    balancSAfterS = balancSAfterS.slice(0,-4);
+    let balancSAfterSStr = balancSAfterS.replace(/[\s.]/g, '');
+    balancSAfterSStr = balancSAfterSStr.replace(/\,/g, '.');
+    balancSAfterSstr = +balancSAfterSStr;
+    await console.log(balancSAfterSstr, 'balancBAfterBstr');
+
+    arrayData1.push({ balancB, balancS, balancSAfterSstr})
     
     }
 
@@ -105,4 +85,3 @@ export async function orderSell(driver) {
  
    
  
-}

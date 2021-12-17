@@ -36,84 +36,34 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
+var selenium_webdriver_1 = require("selenium-webdriver");
 Promise.resolve().then(function () { return require('chromedriver'); });
+var sverkastak_1 = require("./sverkastak");
+var sverkastakSell_1 = require("./sverkastakSell");
 var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
 var chromedriver = require('chromedriver');
-var selectors = require('./datas/selectors');
-require('./datas/data');
-var awaity = require('./datas/awaity');
-var data_1 = require("./datas/data");
-function enterThree(driver) {
+//  let orderB = require('./sverkastak');
+//  let orderS = require('./sverkastakSell');
+(function name() {
     return __awaiter(this, void 0, void 0, function () {
+        var driver, result, i, driver1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, , 19, 21]);
-                    //вход 
-                    return [4 /*yield*/, driver.manage().window().maximize()];
+                    driver = new selenium_webdriver_1.Builder().forBrowser('chrome').build();
+                    return [4 /*yield*/, sverkastak_1.orderBuy(driver)];
                 case 1:
-                    //вход 
-                    _a.sent();
-                    return [4 /*yield*/, driver.get(data_1.urlD)];
+                    result = _a.sent();
+                    for (i = 0; i < result.length; i++)
+                        console.log(result[i].get, result[i].price, result[i].balancBstr, result[i].balancBAfterBstr);
+                    driver1 = new selenium_webdriver_1.Builder().forBrowser('chrome').build();
+                    return [4 /*yield*/, sverkastakSell_1.orderSell(driver1, result[0].get, result[1].get, result[0].price, result[1].price)];
                 case 2:
-                    _a.sent();
-                    return [4 /*yield*/, driver.sleep(5000)];
-                case 3:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.enter(driver).click()];
-                case 4:
-                    _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
-                case 5:
-                    _a.sent();
-                    return [4 /*yield*/, awaity.prinim1(driver)];
-                case 6:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.prinim1(driver).click()];
-                case 7:
-                    _a.sent();
-                    return [4 /*yield*/, awaity.captcha(driver)];
-                case 8:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.captcha(driver).click()];
-                case 9:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.email(driver).sendKeys(data_1.mail)];
-                case 10:
-                    _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
-                case 11:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.password(driver).sendKeys(data_1.pass)];
-                case 12:
-                    _a.sent();
-                    return [4 /*yield*/, driver.sleep(1000)];
-                case 13:
-                    _a.sent();
-                    return [4 /*yield*/, awaity.enter2(driver)];
-                case 14:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.enter2(driver).click()];
-                case 15:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.wait_prinim2(driver)];
-                case 16:
-                    _a.sent();
-                    return [4 /*yield*/, awaity.prinim2(driver)];
-                case 17:
-                    _a.sent();
-                    return [4 /*yield*/, selectors.prinim2(driver).click()];
-                case 18:
-                    _a.sent();
-                    return [3 /*break*/, 21];
-                case 19: return [4 /*yield*/, driver.sleep(5000)];
-                case 20:
-                    _a.sent();
-                    return [7 /*endfinally*/];
-                case 21: return [2 /*return*/];
+                    _a.sent(); //вызов функции Sell
+                    console.log(result[0].balancB, result[0].balancS, result[0].balancSAfterSstr);
+                    return [2 /*return*/];
             }
         });
     });
-}
-exports.enterThree = enterThree;
+})();
