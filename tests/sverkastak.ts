@@ -1,14 +1,14 @@
 import { Builder, By, Key, until } from 'selenium-webdriver';
 import ('chromedriver');
+
 const webdriver = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const chromedriver = require('chromedriver');
 let selectors = require('./datas/selectors');
+let awaity = require('./datas/awaity');
+
 // enter
 let enterP = require('./enter');
-
-//---------------------------------------------------------
-// TODO @ see
 interface Iprimer {
     price: number;
     get: number;
@@ -16,56 +16,46 @@ interface Iprimer {
     balancBAfterBstr: number;
 }
 
-//---------------------------------------------------------
-
 export async function orderBuy(driver)  {
-    
-
-
-
 
     await enterP.enterThree(driver);   
-    await driver.sleep(5000);
+    await awaity.market(driver);
     await console.log('enter success');
 
     //взятие баланса
     let  balancB = await selectors.balancBuy(driver).getText();
-    await console.log(balancB, 'balancB');
-
+  
     let  balancS = await selectors.balancSell(driver).getText();
-    await console.log(balancS, 'balancS');
-    
+   
     //перевод строк в числа
-    //перевод balancB
-    balancB = balancB.slice(0,-4);
-    let balancBStr = balancB.replace(/[\s.]/g, '');
-    balancBStr = balancBStr.replace(/\,/g, '.');
-    let balancBstr:number = +balancBStr;
-    await console.log(balancBstr, 'balancBstr');
-    
-
-    //перевод balancS
-    balancS  = balancS .slice(0,-4);
-    let balancSStr = balancS.replace(/[\s.]/g, '');
-    balancSStr = balancSStr.replace(/\,/g, '.');
-    let balancSstr:number = +balancSStr;
-    await console.log(balancSstr);
+        //перевод balancB
+        balancB = balancB.slice(0,-4);
+        let balancBStr = balancB.replace(/[\s.]/g, '');
+        balancBStr = balancBStr.replace(/\,/g, '.');
+        let balancBstr:number = +balancBStr;
+       
+        //перевод balancS
+        balancS  = balancS .slice(0,-4);
+        let balancSStr = balancS.replace(/[\s.]/g, '');
+        balancSStr = balancSStr.replace(/\,/g, '.');
+        let balancSstr:number = +balancSStr;
+       
 
     //выбор пары
     await driver.findElement(By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click();
-    await driver.sleep(5000);
-
+    await awaity.market(driver);
+    
+    let balancBAfterBstr:number;
+    let balancSAfterSstr:number;
     //цикл для торговли и сравнения
     const t = 2;
-    let arrayData: Iprimer[] = [] // TODO @ see
+    let arrayData: Iprimer[] = [] 
     for (let i=0; i < t; i++) {
         const min = 1; //рандом
         const max = 10;
         let price = min - 0.5 + Math.random() * (max - min + 1);
         let get = min - 0.5 + Math.random() * (max - min + 1);
 
-      
-        let balancBAfterBstr:number;
         let  totalB = get * price; //получение total
         await console.log(totalB, 'totalB'); 
 
@@ -73,26 +63,29 @@ export async function orderBuy(driver)  {
         {
             await console.log('trade_buy posible');
             await selectors.trade_buy(driver, price, get); //торговля
-            let totalBalanc = balancBstr - totalB; //получение totalBalanc 
+           
+                let balancBAfterB = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
+                balancBAfterB = balancBAfterB.slice(0,-4);
+                let balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');
+                balancBAfterBStr = balancBAfterBStr.replace(/\,/g, '.');
+                balancBAfterBstr = +balancBAfterBStr;
 
-            let balancBAfterB = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
-            balancBAfterB = balancBAfterB.slice(0,-4);
-            let balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');
-            balancBAfterBStr = balancBAfterBStr.replace(/\,/g, '.');
-            balancBAfterBstr = +balancBAfterBStr;
-            await console.log(balancBAfterBstr, 'balancBAfterBstr');
+                let balancSAfterS = await selectors.balancSell(driver).getText(); //получение balancBAfterB в строке
+                balancSAfterS = balancSAfterS.slice(0,-4);
+                let balancSAfterSStr = balancSAfterS.replace(/[\s.]/g, '');
+                balancSAfterSStr = balancSAfterSStr.replace(/\,/g, '.');
+                balancSAfterSstr = +balancSAfterSStr;       
 
-            let totalBalancAfterB = balancBAfterBStr - totalB; //totalBalancAfterB
-            await console.log(totalBalanc, 'totalBalanc', totalBalancAfterB, 'totalBalancAfterB');
         } 
         else if (balancBStr < totalB)
         {
             await console.log('totalB > balancB; trade_buy imposible');
         }
-        console.log('arrayData', arrayData)
-        arrayData.push({price, get, balancBstr, balancBAfterBstr}) // TODO @ see
+        arrayData.push({price, get, balancBstr, balancBAfterBstr}) //передача в другой тест данных
     }
 
-    // return objectToReturn // TODO @ see
-    return arrayData // TODO @ see
+    // return objectToReturn 
+    console.log('accountBuy3',  'balanceBuy3', balancBstr, 'balanceBuyAfter3', balancBAfterBstr, 'balanceSell3', balancSstr,  'balanceSellAfter3', balancSAfterSstr,  'totalB3',  balancBstr-balancBAfterBstr,'totalS3', balancSstr-balancSAfterSstr)
+    return arrayData 
+   
 }

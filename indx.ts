@@ -3,7 +3,7 @@ import {enterThree} from "./tests/enter"
 import {enterFour} from "./tests/enterFour"
 import {orderBuy} from "./tests/sverkastak"
 import {orderSell} from "./tests/sverkastakSell"
-import {pricelevel} from "./tests/pricelevel"
+import {pricelevel} from "./tests/pricelevel" 
 //Reading from console
 const readline = require('readline-sync');
 let group:string = readline.question("Input testcases group or testcase ");
