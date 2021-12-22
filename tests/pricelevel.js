@@ -43,8 +43,6 @@ var sverkastakSell_1 = require("./sverkastakSell");
 var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
 var chromedriver = require('chromedriver');
-//  let orderB = require('./sverkastak');
-//  let orderS = require('./sverkastakSell');
 (function name() {
     return __awaiter(this, void 0, void 0, function () {
         var driver, result, i, driver1;
@@ -61,7 +59,6 @@ var chromedriver = require('chromedriver');
                     return [4 /*yield*/, sverkastakSell_1.orderSell(driver1, result[0].get, result[1].get, result[0].price, result[1].price)];
                 case 2:
                     _a.sent(); //вызов функции Sell
-                    console.log(result[0].balancB, result[0].balancS, result[0].balancSAfterSstr);
                     return [2 /*return*/];
             }
         });

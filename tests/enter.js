@@ -37,13 +37,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 Promise.resolve().then(function () { return require('chromedriver'); });
+var data_1 = require("./datas/data");
 var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
 var chromedriver = require('chromedriver');
 var selectors = require('./datas/selectors');
-require('./datas/data');
 var awaity = require('./datas/awaity');
-var data_1 = require("./datas/data");
+require('./datas/data');
 function enterThree(driver) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {

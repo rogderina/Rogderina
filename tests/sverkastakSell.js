@@ -42,17 +42,18 @@ var webdriver = require('selenium-webdriver');
 var chrome = require('selenium-webdriver/chrome');
 var chromedriver = require('chromedriver');
 var selectors = require('./datas/selectors');
+var awaity = require('./datas/awaity');
 // enter
 var enterP = require('./enterFour');
 function orderSell(driver, get1, get2, price1, price2) {
     return __awaiter(this, void 0, void 0, function () {
-        var balancB, balancS, balancBStr, balancBstr, balancSStr, balancSstr, arrayData1, total1, total2, balancSAfterSstr, balancSAfterS, balancSAfterSStr;
+        var balancB, balancS, balancBStr, balancBstr, balancSStr, balancSstr, arrayData1, total1, total2, balancBAfterBstr, balancBAfterB, balancBAfterBStr, balancSAfterSstr, balancSAfterS, balancSAfterSStr;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, enterP.enterFour(driver)];
                 case 1:
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(5000)];
+                    return [4 /*yield*/, awaity.market(driver)];
                 case 2:
                     _a.sent();
                     return [4 /*yield*/, console.log('enter success')];
@@ -76,45 +77,52 @@ function orderSell(driver, get1, get2, price1, price2) {
                     balancBStr = balancB.replace(/[\s.]/g, '');
                     balancBStr = balancBStr.replace(/\,/g, '.');
                     balancBstr = +balancBStr;
-                    return [4 /*yield*/, console.log(balancBstr, 'balancBstr')];
-                case 8:
-                    _a.sent();
                     //перевод balancS
                     balancS = balancS.slice(0, -4);
                     balancSStr = balancS.replace(/[\s.]/g, '');
                     balancSStr = balancSStr.replace(/\,/g, '.');
                     balancSstr = +balancSStr;
-                    return [4 /*yield*/, console.log(balancSstr)];
-                case 9:
-                    _a.sent();
                     //выбор пары
                     return [4 /*yield*/, driver.findElement(selenium_webdriver_1.By.className("SELECTOR-CHECK-PAIR-btc_usdt")).click()];
-                case 10:
+                case 8:
                     //выбор пары
                     _a.sent();
-                    return [4 /*yield*/, driver.sleep(5000)];
-                case 11:
+                    return [4 /*yield*/, awaity.market(driver)];
+                case 9:
                     _a.sent();
                     arrayData1 = [];
                     total1 = get1 * price1;
                     total2 = get2 * price2;
-                    return [4 /*yield*/, selectors.trade_buy(driver, price1, get1)];
+                    return [4 /*yield*/, selectors.trade_sell(driver, price1, get1)];
+                case 10:
+                    _a.sent();
+                    return [4 /*yield*/, selectors.trade_sell(driver, price2, get2)];
+                case 11:
+                    _a.sent();
+                    return [4 /*yield*/, console.log('total1', total1, 'total2', total2, total2 + total1)];
                 case 12:
                     _a.sent();
-                    return [4 /*yield*/, selectors.trade_buy(driver, price2, get2)];
+                    return [4 /*yield*/, driver.sleep(5000)];
                 case 13:
                     _a.sent();
                     return [4 /*yield*/, selectors.balancBuy(driver).getText()];
                 case 14:
+                    balancBAfterB = _a.sent();
+                    balancBAfterB = balancBAfterB.slice(0, -4);
+                    balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');
+                    balancBAfterBStr = balancBAfterBStr.replace(/\,/g, '.');
+                    balancBAfterBstr = +balancBAfterBStr;
+                    return [4 /*yield*/, selectors.balancSell(driver).getText()];
+                case 15:
                     balancSAfterS = _a.sent();
                     balancSAfterS = balancSAfterS.slice(0, -4);
                     balancSAfterSStr = balancSAfterS.replace(/[\s.]/g, '');
                     balancSAfterSStr = balancSAfterSStr.replace(/\,/g, '.');
                     balancSAfterSstr = +balancSAfterSStr;
-                    return [4 /*yield*/, console.log(balancSAfterSstr, 'balancBAfterBstr')];
-                case 15:
-                    _a.sent();
                     arrayData1.push({ balancB: balancB, balancS: balancS, balancSAfterSstr: balancSAfterSstr });
+                    return [4 /*yield*/, console.log('accountSell4', 'balanceBuy4', balancBstr, 'balanceBuyAfter4', balancBAfterBstr, 'balanceSell4', balancSstr, 'balanceSellAfter4', balancSAfterSstr, 'totalB4', balancBAfterBstr - balancBstr, 'totalS4', balancSstr - balancSAfterSstr)];
+                case 16:
+                    _a.sent();
                     return [2 /*return*/];
             }
         });

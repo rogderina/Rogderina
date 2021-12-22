@@ -63,7 +63,7 @@ export async function orderBuy(driver)  {
         {
             await console.log('trade_buy posible');
             await selectors.trade_buy(driver, price, get); //торговля
-           
+            await driver.sleep(5000);
                 let balancBAfterB = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
                 balancBAfterB = balancBAfterB.slice(0,-4);
                 let balancBAfterBStr = balancBAfterB.replace(/[\s.]/g, '');

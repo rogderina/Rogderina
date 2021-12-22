@@ -29,14 +29,14 @@ export async function orderSell(driver, get1, get2, price1, price2) {
         let balancBStr = balancB.replace(/[\s.]/g, '');
         balancBStr = balancBStr.replace(/\,/g, '.');
         let balancBstr:number = +balancBStr;
-          await console.log(balancBstr, 'balancBstr');
+      
     
             //перевод balancS
          balancS  = balancS .slice(0,-4);
          let balancSStr = balancS.replace(/[\s.]/g, '');
          balancSStr = balancSStr.replace(/\,/g, '.');
          let balancSstr:number = +balancSStr;
-          await console.log(balancSstr);
+    
     
    
     
@@ -59,6 +59,11 @@ export async function orderSell(driver, get1, get2, price1, price2) {
     let total2 = get2 * price2;
     await selectors.trade_sell(driver, price1, get1);
     await selectors.trade_sell(driver, price2, get2);
+    await console.log('total1', total1, 'total2', total2, total2+total1);
+
+
+
+    await driver.sleep(5000);
 
     let balancBAfterBstr:number;
     let balancBAfterB = await selectors.balancBuy(driver).getText(); //получение balancBAfterB в строке
@@ -79,8 +84,11 @@ export async function orderSell(driver, get1, get2, price1, price2) {
    
     arrayData1.push({ balancB, balancS, balancSAfterSstr})
     
-     await console.log('accountSell4',  balancBstr, balancBAfterBstr,  balancSstr, balancSAfterSstr, balancBAfterBstr-balancBstr,  balancSstr-balancSAfterSstr);
+     await console.log('accountSell4', 'balanceBuy4', balancBstr, 'balanceBuyAfter4', balancBAfterBstr, 'balanceSell4', balancSstr, 'balanceSellAfter4', balancSAfterSstr, 'totalB4', balancBAfterBstr-balancBstr, 'totalS4', balancSstr-balancSAfterSstr);
     }
+
+
+  
 
   
    
