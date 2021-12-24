@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-24T04:49:27.984Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36" etag="eG1bJfIqD5Bfr8dXPRhZ" version="16.0.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-24T04:54:55.601Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36" etag="uLUYxBrRGNB1Nggv7SgC" version="16.0.3" type="github">
   <diagram name="Page-1" id="e56a1550-8fbb-45ad-956c-1786394a9013">
     <mxGraphModel dx="1350" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -141,6 +141,12 @@
         </mxCell>
         <mxCell id="5_Ihf_zHRVemHmPZ1YKh-33" value="все элементы, которые будут использованы в тестах" style="shape=partialRectangle;top=0;left=0;right=0;bottom=0;html=1;align=left;verticalAlign=middle;fillColor=none;spacingLeft=60;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;dropTarget=0;fontStyle=5;" vertex="1" parent="5_Ihf_zHRVemHmPZ1YKh-32">
           <mxGeometry y="26" width="240" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Ihf_zHRVemHmPZ1YKh-39" value="&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px ; font-weight: 700 ; text-align: left&quot;&gt;functions&lt;/span&gt;" style="swimlane;html=1;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#e0e0e0;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=#ffffff;align=center;rounded=0;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=14" vertex="1" parent="1">
+          <mxGeometry x="730" y="130" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="5_Ihf_zHRVemHmPZ1YKh-40" value="экспортируемые функции для определенных действий, например &lt;span style=&quot;font-weight: normal&quot;&gt;sell&lt;/span&gt;" style="shape=partialRectangle;top=0;left=0;right=0;bottom=0;html=1;align=left;verticalAlign=middle;fillColor=none;spacingLeft=60;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;dropTarget=0;fontStyle=5;" vertex="1" parent="5_Ihf_zHRVemHmPZ1YKh-39">
+          <mxGeometry y="26" width="240" height="44" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
